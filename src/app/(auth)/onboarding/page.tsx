@@ -216,7 +216,7 @@ export default function OnboardingForm() {
                         style={{ borderRadius: "5px" }}
                         name="location"
                         className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
-                        placeholder="Enter location"
+                          placeholder="Enter Primary Inventory Location"
                       />
                     </div>
 
@@ -234,7 +234,9 @@ export default function OnboardingForm() {
                           name="currency"
                           className="mt-1 block w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
                         >
-                          <option value="USD">USD ($)</option>
+                          <option value="---">Select your Currency</option>
+                            <option value="USD">USD ($)</option>
+                            <option value="NGN">NGN (#)</option>
                           <option value="EUR">EUR (€)</option>
                           <option value="GBP">GBP (£)</option>
                         </select>
@@ -253,6 +255,7 @@ export default function OnboardingForm() {
                           style={{ borderRadius: "5px" }}
                           className="mt-1 block w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
                         >
+                            <option value="----">Select Default Stock Unit</option>
                           <option value="pieces">Pieces</option>
                           <option value="kg">Kilograms</option>
                           <option value="units">Units</option>
@@ -274,6 +277,7 @@ export default function OnboardingForm() {
                           name="badGoods"
                           className="mt-1 block w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
                         >
+                            <option value="----">Select Bad Goods Handling</option>
                           <option value="return">Return to Supplier</option>
                           <option value="dispose">Dispose</option>
                           <option value="repair">Repair</option>
@@ -293,12 +297,12 @@ export default function OnboardingForm() {
                           style={{ borderRadius: "5px" }}
                           name="reorderThreshold"
                           className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
-                          placeholder="Enter threshold"
+                            placeholder="Enter Re-order Threshold"
                         />
                       </div>
                     </div>
 
-                    <div className="space-y-4">
+                    <div className="space-y-4 mt-3">
                       <div className="flex items-center justify-between">
                         <label
                           htmlFor="discounts"
