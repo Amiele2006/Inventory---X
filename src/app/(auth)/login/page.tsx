@@ -1,8 +1,9 @@
 "use client";
+
 import { useState } from "react";
 import Link from "next/link";
 import { Poppins } from "next/font/google";
-import AuthLayout from "@/components/AuthLayout";
+import AuthLayout from "@/components/AuthLayout/AuthLayout";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -67,7 +68,7 @@ export default function Login() {
               id="password"
               type={showPassword ? "text" : "password"}
               style={{ borderRadius: '8px' }}
-              className="w-full rounded-lg border border-muted px-4 py-2.5 pr-10 text-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+              className="w-full rounded-lg border border-muted px-4 py-2.5 pr-10 text-foreground"
             />
             <button
               type="button"

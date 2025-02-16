@@ -1,3 +1,4 @@
+"use client";
 import type React from "react";
 import { Poppins } from "next/font/google";
 
@@ -56,7 +57,7 @@ export default function AuthLayout({ children, screenType }: AuthLayoutProps) {
 
         {screenType === "onboarding" ? (
           <div className="absolute left-1/2 top-1/2 w-[400px] -translate-x-1/2 -translate-y-1/2 text-white">
-            <h1 className="mb-4 text-5xl font-extrabold leading-tight">
+            <h1 className="mb-4 text-7xl font-extrabold leading-tight">
               You are <br /> almost there!
             </h1>
             <p className="text-lg text-gray-300">{content.description}</p>

@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Poppins } from "next/font/google";
-import AuthLayout from "@/components/AuthLayout";
+import AuthLayout from "@/components/AuthLayout/AuthLayout";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
@@ -13,8 +13,12 @@ const poppins = Poppins({
 });
 
 const validationSchema = Yup.object({
-  email: Yup.string().email("Invalid email address").required("Required"),
-  password: Yup.string().min(8, "Password must be at least 8 characters").required("Required"),
+  email: Yup.string()
+  .email("Invalid email address")
+  .required("Required"),
+  password: Yup.string()
+    .min(8, "Password must be at least 8 characters")
+    .required("Required"),
   confirmPassword: Yup.string()
     .oneOf([Yup.ref("password"), undefined], "Passwords must match")
     .required("Required"),
@@ -47,7 +51,7 @@ export default function Register() {
               <div className="space-y-2">
                 <label
                   htmlFor="email"
-                  className="block text-sm font-medium text-gray-700"
+                  className={`block ${poppins.className} text-sm font-serif text-gray-700`}
                 >
                   Email Address
                 </label>
@@ -78,10 +82,10 @@ export default function Register() {
                 </div>
               </div>
 
-              <div className="space-y-2">
+              <div className="space-y-2 mt-5">
                 <label
                   htmlFor="password"
-                  className="block text-sm font-medium text-gray-700"
+                  className={`block ${poppins.className} text-sm font-medium text-gray-700`}
                 >
                   Password
                 </label>
@@ -145,7 +149,7 @@ export default function Register() {
               <div className="space-y-2">
                 <label
                   htmlFor="confirm-password"
-                  className="block text-sm font-medium text-gray-700"
+                  className={`block ${poppins.className} text-sm font-medium text-gray-700`}
                 >
                   Confirm Password
                 </label>
