@@ -149,7 +149,7 @@ export default function Register() {
               <div className="space-y-2">
                 <label
                   htmlFor="confirm-password"
-                  className={`block ${poppins.className} text-sm font-medium text-gray-700`}
+                  className={`block ${poppins.className}text-sm font-medium text-gray-700`}
                 >
                   Confirm Password
                 </label>
