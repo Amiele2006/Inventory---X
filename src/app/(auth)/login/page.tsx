@@ -53,7 +53,7 @@ export default function Login() {
               <div className="space-y-1">
                 <label
                   htmlFor="email"
-                  className={`block font-serif text-foreground ${poppins.className}`}
+                  className={`block text-foreground ${poppins.className}`}
                 >
                   Email Address
                 </label>
@@ -91,7 +91,7 @@ export default function Login() {
               <div className="space-y-1">
                 <label
                   htmlFor="password"
-                  className="block font-serif text-foreground"
+                  className={`block font-poppins text-foreground`}
                 >
                   Password
                 </label>

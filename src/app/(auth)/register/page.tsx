@@ -18,10 +18,10 @@ const validationSchema = Yup.object({
   .required("Email Address is Required... "),
   password: Yup.string()
     .min(5, "Password must be at least 5 characters")
-    .required("Required"),
+    .required("Password is Required... "),
   confirmPassword: Yup.string()
     .oneOf([Yup.ref("password"), undefined], "Passwords must match")
-    .required("Required"),
+    .required("Confirm Password is Required"),
 });
 
 export default function Register() {
@@ -93,6 +93,7 @@ export default function Register() {
                   <Field
                     id="password"
                     name="password"
+                    placeholder="Enter your Password"
                     type={showPassword ? "password" : "text"}
                     style={{ borderRadius: '8px' }}
                     className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
@@ -158,6 +159,7 @@ export default function Register() {
                   <Field
                     id="confirm-password"
                     name="confirmPassword"
+                    placeholder="Enter your Confirm Password"
                     type={showPassword ? "password" : "text"}
                     style={{ borderRadius: '8px' }}
                     className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"

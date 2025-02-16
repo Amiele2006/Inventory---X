@@ -1,6 +1,8 @@
 "use client";
 import type React from "react";
 import { Poppins } from "next/font/google";
+import Image from "next/image";
+import WareHouse from "@/images/warehouse.jpeg";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -48,8 +50,8 @@ export default function AuthLayout({ children, screenType }: AuthLayoutProps) {
             </div>
           </div>
         </div>
-        <img
-          src="https://s3-alpha-sig.figma.com/img/e19f/496f/2ca22791f9b8bd8c2566aeda8ea1f5dc?Expires=1740355200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=WK6NRPlF9UvOOs~4kaWrlDOGAiAzP1HWYVi2SYRSSjgB3EG87GMNVWaT8AEXhcd6YJIkpCkQzXT-opcSh9gQEmV4NG17eaYQVPLBKBLRiyrh6IHTxCRk7Y1QzaQ7PXU8VQ0dZcqIYCAEktTZsM~DoXqgO3MIktvIRWDWDbZbif-CcNFh9cA384rj7O0a2ZSLVxl2NRGGB626OUqTqhnqkInSHwNAXrI5zhSdBDKKlAPISmGrhiScMWhCACOEZ02q8yBnNj8Dt7aClx3sZYZ61u9uoftqUzriZ8YbNfMC91GZGT4xkrDFPEs1zWXfDXnYrvxs-IP5zWgWTN~ElAwoCg__"
+        <Image
+          src={WareHouse}
           alt="Warehouse interior"
           className="h-full w-full object-cover brightness-50"
         />
