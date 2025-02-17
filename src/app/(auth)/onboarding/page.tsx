@@ -19,9 +19,14 @@ export default function OnboardingForm() {
   const handleBack = () => {
     setStep((prev) => Math.max(prev - 1, 1));
   };
+
+  const handleFinish = () => {
+    console.log("Onboarding completed!")
+  }
   return (
     <>
       <AuthLayout screenType="onboarding">
+        
         <div className="w-full max-w-lg px-6">
           <div className="mb- flex items-center justify-center">
             {[...Array(totalSteps)].map((_, index) => (
@@ -378,22 +383,61 @@ export default function OnboardingForm() {
               </>
             ) : step === 3 ? (
               <>
-                <div className="flex items-center justify-between pt-8">
-                  <button
-                    type="button"
-                    onClick={handleBack}
-                    className="block w-full rounded-lg py-2.5 text-gray-900"
-                  >
-                    Back
-                  </button>
-                  <button
-                    type="submit"
-                    className="block w-full rounded-lg border border-gray-300 bg-blue ms-2 px-4 py-2.5 bg-blue-500 text-white focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
-                    style={{ borderRadius: "8px" }}
-                  >
-                    Finish
-                  </button>
+                <div>
+                  <h1 className="text-2xl font-semibold text-gray-900">Notifications & Preferences</h1>
+                  <p className="mt-2 text-sm text-gray-500">
+                    Configure notification to stay at alert on stock and sales 
+                  </p>
                 </div>
+
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault()
+                    handleFinish()
+                  }}
+                  className="space-y-6"
+                >
+                  <div className="space-y-4">
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-between">
+                        <label className="text-sm font-medium text-gray-700">Email Notifications</label>
+                        <label className="relative inline-flex cursor-pointer items-center">
+                          <input type="checkbox" className="peer sr-only" />
+                          <div className="h-6 w-11 rounded-full bg-gray-200 after:absolute after:left-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-blue-500 peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:ring-2 peer-focus:ring-blue-500/20"></div>
+                        </label>
+                      </div>
+
+                      <div className="flex items-center justify-between">
+                        <label className="text-sm font-medium text-gray-700">Low Stock Alerts</label>
+                        <label className="relative inline-flex cursor-pointer items-center">
+                          <input type="checkbox" className="peer sr-only" />
+                          <div className="h-6 w-11 rounded-full bg-gray-200 after:absolute after:left-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-blue-500 peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:ring-2 peer-focus:ring-blue-500/20"></div>
+                        </label>
+                      </div>
+
+                      <div className="flex items-center justify-between">
+                        <label className="text-sm font-medium text-gray-700">Order Updates</label>
+                        <label className="relative inline-flex cursor-pointer items-center">
+                          <input type="checkbox" className="peer sr-only" />
+                          <div className="h-6 w-11 rounded-full bg-gray-200 after:absolute after:left-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-blue-500 peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:ring-2 peer-focus:ring-blue-500/20"></div>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center justify-between pt-8">
+                    <button type="button" onClick={handleBack} className="block w-full rounded-lg py-2.5 text-gray-900">
+                      Back
+                    </button>
+                    <button
+                      type="submit"
+                      className="block w-full rounded-lg border border-gray-300 bg-blue ms-2 px-4 py-2.5 bg-blue-500 text-white focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+                      style={{ borderRadius: "8px" }}
+                    >
+                      Finish
+                    </button>
+                  </div>
+                </form>
               </>
             ) : null}
           </div>

@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Inventory-X",
-  description: "Inventory-X",
+  description: "Supermarket Management Complete your setup to unlock seamless inventory tracking, sales management, and real-time insights. ",
 };
 
 export default function RootLayout({
