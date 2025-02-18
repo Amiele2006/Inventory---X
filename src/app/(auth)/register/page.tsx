@@ -217,7 +217,7 @@ export default function Register() {
               <button
                 type="submit"
                 style={{ borderRadius: '10px' }}
-                className="w-full rounded-lg bg-blue-500 px-6 py-3 text-lg text-white transition-colors hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+                className="w-full rounded-lg bg-[#1C2331] px-6 py-3 text-lg text-white transition-colors hover:bg-[#1C2331]-600 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
                 disabled={isSubmitting}
               >
                 Sign Up
@@ -227,8 +227,8 @@ export default function Register() {
         </Formik>
 
         <p className="text-center text-sm text-gray-500">
-          Already have an account?{" "}
-          <Link href="/login" className="text-blue-500 hover:underline">
+          Already have an account? 
+          <Link href="/login" className="text-[#1C2331] font-bold ms-2">
             Login
           </Link>
         </p>

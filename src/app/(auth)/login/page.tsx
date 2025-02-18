@@ -34,7 +34,7 @@ export default function Login() {
             </h1>
             <p className="text-foreground">
               Don't have an account?
-              <span className="text-blue-500 hover:underline font-extrabold ms-2">
+              <span className="text-#1C2331-500 hover:underline font-extrabold ms-2">
                 <Link href="/register">Sign Up</Link>
               </span>
             </p>
@@ -64,7 +64,7 @@ export default function Login() {
                     type="email"
                     style={{ borderRadius: "8px" }}
                     placeholder="Enter your email"
-                    className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 form-input"
+                    className="w-full rounded-lg border px-4 py-2 focus:border-[#1C2331]-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 form-input"
                   />
                   <svg
                     className="absolute right-3 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground"
@@ -156,7 +156,7 @@ export default function Login() {
               <button
                 type="submit"
                 style={{ borderRadius: '10px' }}
-                className="w-full rounded-lg bg-blue-500 px-6 py-3 text-lg text-white transition-colors hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+                className="w-full rounded-lg bg-[#1C2331] px-6 py-4 text-lg text-white transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500/20"
                 disabled={isSubmitting}
               >
                 Login
@@ -167,10 +167,10 @@ export default function Login() {
         <div className="space-y-4">
           <div className="text-start text-sm">
             <Link
-              href="/auth/forgot-password"
+              href="/forgot-password"
               className="text-sm text-muted-foreground"
             >
-              Forgot Password? <span className="text-primary">Recover</span>
+              Forgot Password? <span className="text-[#1C2331]">Recover</span>
             </Link>
           </div>
         </div>

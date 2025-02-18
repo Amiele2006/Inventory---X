@@ -11,7 +11,7 @@ const poppins = Poppins({
 
 type AuthLayoutProps = {
   children: React.ReactNode;
-  screenType: "login" | "register" | "onboarding";
+  screenType: "login" | "register" | "onboarding" | "forgot-password" | "reset-password" | "create-password" | "success"
 };
 
 export default function AuthLayout({ children, screenType }: AuthLayoutProps) {
@@ -55,7 +55,7 @@ export default function AuthLayout({ children, screenType }: AuthLayoutProps) {
           alt="Warehouse interior"
           className="h-full w-full object-cover brightness-50"
         />
-        <div className="absolute inset-0 bg-black/80" />
+        <div className="absolute inset-0 bg-[#1C2331]/90" />
 
         {screenType === "onboarding" ? (
           <div className="absolute left-1/2 top-1/2 w-[400px] -translate-x-1/2 -translate-y-1/2 text-white">

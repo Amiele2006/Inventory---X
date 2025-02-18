@@ -180,7 +180,7 @@ export default function OnboardingForm() {
                     </button>
                     <button
                       type="submit"
-                      className="block w-full rounded-lg border border-gray-300 bg-blue ms-2 px-4 py-2.5 bg-blue-500 text-white focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+                      className="block w-full rounded-lg border border-gray-300 bg-blue ms-2 px-4 py-2.5 #1C2331 text-white focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
                       style={{ borderRadius: "8px" }}
                     >
                       Next
@@ -373,7 +373,7 @@ export default function OnboardingForm() {
                     </button>
                     <button
                       type="submit"
-                      className="block w-full rounded-lg border border-gray-300 bg-blue ms-2 px-4 py-2.5 bg-blue-500 text-white focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+                      className="block w-full rounded-lg border border-gray-300 bg-blue ms-2 px-4 py-2.5 #1C2331 text-white focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
                       style={{ borderRadius: "8px" }}
                     >
                       Next
@@ -435,7 +435,7 @@ export default function OnboardingForm() {
                             </button>
                             <button
                               type="submit"
-                              className="rounded-lg bg-[#0066FF] px-8 py-2.5 text-white transition-colors hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+                              className="rounded-lg bg-[#1C2331] px-8 py-2.5 text-white transition-colors hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
                             >
                               Finish
                             </button>
