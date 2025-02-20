@@ -82,9 +82,10 @@ export default function AuthLayout({ children, screenType }: AuthLayoutProps) {
                 <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z" />
               </svg>
             </div>
-            <p className="mb-4 text-sm leading-relaxed break-words">
-              "{content.testimonial}"
-            </p>
+              <p className="mb-4 text-sm leading-relaxed break-words">
+                &ldquo;{content.testimonial}&rdquo;
+              </p>
+
             <div className="space-y-1">
               <p className="font-semibold">{content.author}</p>
               <div className="flex gap-1">

@@ -33,11 +33,12 @@ export default function Login() {
               Welcome back!
             </h1>
             <p className="text-foreground">
-              Don't have an account?
+              Don&apos;t have an account?
               <span className="text-#1C2331-500 hover:underline font-extrabold ms-2">
                 <Link href="/register">Sign Up</Link>
               </span>
             </p>
+
           </div>
         </div>
 

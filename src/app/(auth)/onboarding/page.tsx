@@ -433,7 +433,7 @@ export default function OnboardingForm() {
                               onClick={handleBack}
                               style={{borderRadius:"10px"}}
                               className="rounded-lg px-8 py-2.5 bg-[#9DA3A8] text-white transition-colors focus:outline-none focus:ring-2 focus:ring-gray-200"
-                            >
+                            > 
                               Back
                             </button>
                             <button

@@ -37,8 +37,9 @@ export default function ForgotPassword() {
               Forgot Password?
             </h1>
             <p className="text-gray-500">
-              No worries, we'll send you reset instructions.
+              No worries, we&apos;ll send you reset instructions.
             </p>
+
           </div>
 
           <form onSubmit={formik.handleSubmit} className="space-y-4">

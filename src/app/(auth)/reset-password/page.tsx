@@ -85,20 +85,22 @@ export default function ResetPassword() {
 
     useEffect(() => {
         if (currentStep === "verify") {
-            inputRefs[0].current?.focus();
+            inputRefs[0]?.current?.focus();
         }
-    }, [currentStep]);
+    }, [currentStep, inputRefs]);
+
 
     const renderVerifyStep = () => (
         <div className="w-full max-w-md mx-auto space-y-9 p-1">
             <div className="space-y-2">
                 <h1 className="text-3xl font-bold tracking-tight">Password Reset</h1>
                 <p className="text-gray-500">
-                    We sent a code to emily@projectx.com. Didn't receive the email?
+                    We sent a code to emily@projectx.com. Didn&apos;t receive the email?
                     <button className="text-gray-900 font-medium hover:underline">
                         Resend
                     </button>
                 </p>
+
             </div>
 
             <form onSubmit={otpFormik.handleSubmit} className="space-y-6">
