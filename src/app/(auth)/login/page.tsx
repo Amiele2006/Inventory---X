@@ -155,9 +155,10 @@ export default function Login() {
 
               <button
                 type="submit"
-                style={{ borderRadius: '10px' }}
-                className="w-full rounded-lg bg-[#1C2331] px-6 py-4 text-lg text-white transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500/20"
                 disabled={isSubmitting}
+              style={{ borderRadius: '10px' }}
+                className="w-full rounded-lg bg-[#1C2331] px-6 py-3 text-lg text-white transition-colors hover:bg-[#1C2331]-600 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+                
               >
                 Login
               </button>

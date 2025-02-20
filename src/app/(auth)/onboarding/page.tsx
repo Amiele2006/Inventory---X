@@ -34,7 +34,7 @@ export default function OnboardingForm() {
                 <div
                   className={`flex h-8 w-8 items-center justify-center rounded-full text-sm font-medium ${
                     index + 1 === step
-                      ? "bg-blue-500 text-white"
+                      ? "bg-[#1C2331] text-white"
                       : "bg-gray-100 text-gray-400"
                   }`}
                 >
@@ -43,7 +43,7 @@ export default function OnboardingForm() {
                 {index < totalSteps - 1 && (
                   <div
                     className={`mx-2 h-[2px] w-16 ${
-                      index + 1 < step ? "bg-blue-500" : "bg-gray-200"
+                      index + 1 < step ? "bg-[#1C2331]" : "bg-gray-200"
                     }`}
                   ></div>
                 )}
@@ -174,13 +174,14 @@ export default function OnboardingForm() {
                     <button
                       type="button"
                       onClick={handleBack}
-                      className="block w-full rounded-lg py-2.5 text-gray-900"
+                      style={{ borderRadius: "5px" }}
+                      className="block w-full rounded-lg py-2.5 text-white bg-[#9DA3A8]"
                     >
                       Back
                     </button>
                     <button
                       type="submit"
-                      className="block w-full rounded-lg border border-gray-300 bg-blue ms-2 px-4 py-2.5 #1C2331 text-white focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+                      className="block w-full rounded-lg border border-gray-300 bg-[#1C2331] ms-2 px-4 py-2.5 #1C2331 text-white focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
                       style={{ borderRadius: "8px" }}
                     >
                       Next
@@ -367,13 +368,14 @@ export default function OnboardingForm() {
                     <button
                       type="button"
                       onClick={handleBack}
-                      className="block w-full rounded-lg py-2.5 text-gray-900"
+                      style={{ borderRadius: "5px" }}
+                        className="block w-full rounded-lg py-2.5 text-white bg-[#9DA3A8]"
                     >
                       Back
                     </button>
                     <button
                       type="submit"
-                      className="block w-full rounded-lg border border-gray-300 bg-blue ms-2 px-4 py-2.5 #1C2331 text-white focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+                        className="block w-full rounded-lg border border-gray-300 bg-[#1C2331] ms-2 px-4 py-2.5 #1C2331 text-white focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
                       style={{ borderRadius: "8px" }}
                     >
                       Next
@@ -429,13 +431,15 @@ export default function OnboardingForm() {
                             <button
                               type="button"
                               onClick={handleBack}
-                              className="rounded-lg px-8 py-2.5 text-gray-600 transition-colors hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+                              style={{borderRadius:"10px"}}
+                              className="rounded-lg px-8 py-2.5 bg-[#9DA3A8] text-white transition-colors focus:outline-none focus:ring-2 focus:ring-gray-200"
                             >
                               Back
                             </button>
                             <button
                               type="submit"
-                              className="rounded-lg bg-[#1C2331] px-8 py-2.5 text-white transition-colors hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+                              style={{borderRadius:"10px"}}
+                              className="rounded-lg bg-[#1C2331] px-8 py-2.5 text-white transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500/20"
                             >
                               Finish
                             </button>

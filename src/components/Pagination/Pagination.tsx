@@ -4,12 +4,10 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 const Pagination = ({
   currentPage,
-  hasPrev,
-  hasNext,
+  totalPages,
 }: {
-  currentPage: number,
-  hasPrev: boolean,
-  hasNext: boolean,
+  currentPage: number;
+  totalPages: number;
 }) => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -22,17 +20,20 @@ const Pagination = ({
   };
 
   return (
-    <div className="mt-12 flex justify-between w-full">
+    <div className="mt-12 flex justify-between items-center w-full">
       <button
         className="rounded-md bg-lama text-white p-2 text-sm w-24 cursor-pointer disabled:cursor-not-allowed disabled:bg-pink-200"
-        disabled={!hasPrev}
+        disabled={currentPage <= 1}
         onClick={() => createPageUrl(currentPage - 1)}
       >
         Previous
       </button>
+      <span className="text-sm text-gray-700">
+        Page {currentPage} of {totalPages}
+      </span>
       <button
         className="rounded-md bg-lama text-white p-2 text-sm w-24 cursor-pointer disabled:cursor-not-allowed disabled:bg-pink-200"
-        disabled={!hasNext}
+        disabled={currentPage >= totalPages}
         onClick={() => createPageUrl(currentPage + 1)}
       >
         Next
