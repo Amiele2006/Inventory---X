@@ -5,6 +5,7 @@ import * as Yup from "yup";
 import { Mail } from "lucide-react";
 import AuthLayout from "@/components/AuthLayout/AuthLayout";
 import { Poppins } from "next/font/google";
+import { Link } from "nextjs13-progress";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -88,12 +89,12 @@ export default function ForgotPassword() {
 
           <div className="text-center">
             <span className="text-gray-500">Remember Password? </span>
-            <a
+            <Link
               href="/login"
               className="font-medium text-gray-900 hover:underline"
             >
               Login
-            </a>
+            </Link>
           </div>
         </div>
       </AuthLayout>

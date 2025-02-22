@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
+import {Link} from "nextjs13-progress";
 import { Poppins } from "next/font/google";
 import AuthLayout from "@/components/AuthLayout/AuthLayout";
 import { Formik, Field, Form, ErrorMessage } from "formik";

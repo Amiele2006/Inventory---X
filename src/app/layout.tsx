@@ -2,7 +2,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-// import { NextNProgress } from 'nextjs-progressbar';
+import { Next13NProgress } from 'nextjs13-progress';
 
 import { headers } from 'next/headers';
 
@@ -58,7 +58,17 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-      
+      <Next13NProgress 
+          height={4}
+          color='#1C2331'
+          startPosition={0.75}
+          stopDelayMs={200}
+          showOnShallow
+          options={{ 
+            speed: 200,
+            minimum: 0.1,
+          }}
+      />
         {children}
       </body>
     </html>

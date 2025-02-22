@@ -51,6 +51,8 @@ export default function AuthLayout({ children, screenType }: AuthLayoutProps) {
           </div>
         </div>
         <Image
+          quality={80} 
+          loading="lazy"
           src={WareHouse}
           alt="Warehouse interior"
           className="h-full w-full object-cover brightness-50"
