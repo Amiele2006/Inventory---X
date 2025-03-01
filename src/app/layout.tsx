@@ -5,6 +5,7 @@ import "./globals.css";
 import { Next13NProgress } from 'nextjs13-progress';
 
 import { headers } from 'next/headers';
+import { Providers } from "@/lib/redux/provider"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -58,6 +59,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <Providers>
+
       <Next13NProgress 
           height={4}
           color='#1C2331'
@@ -68,8 +71,9 @@ export default function RootLayout({
             speed: 200,
             minimum: 0.1,
           }}
-      />
+          />
         {children}
+          </Providers>
       </body>
     </html>
   );
