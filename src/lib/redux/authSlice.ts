@@ -20,12 +20,12 @@ const initialState: AuthState = {
 export const loginUser = createAsyncThunk(
   "auth/login",
   async (
-    credentials: { email: string; password: string },
+    credentials: { email: string; password: string }, 
     { rejectWithValue }
   ) => {
     try {
       // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 7000));
+      await new Promise((resolve) => setTimeout(resolve, 3000));
 
       // For demo purposes, we'll just check if the email is "admin@example.com"
       if (credentials.email === "admin@example.com") {

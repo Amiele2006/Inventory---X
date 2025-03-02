@@ -10,6 +10,7 @@ import * as Yup from "yup";
 import { useAppDispatch, useAppSelector } from "@/lib/redux/store";
 import { loginUser } from "@/lib/redux/authSlice";
 import { Loader } from "lucide-react";
+import { toast } from 'sonner';
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -33,8 +34,12 @@ export default function Login() {
 
   const handleSubmit = async (values: { email: string; password: string }) => {
     const resultAction = await dispatch(loginUser(values));
+    console.log(resultAction);
     if (loginUser.fulfilled.match(resultAction)) {
+      toast.success('Login successful!');
       router.push("/");
+    } else {
+      toast.error('Please check your credentials and try again.');
     }
   };
 
@@ -169,7 +174,7 @@ export default function Login() {
                 />
               </div>
 
-              {error && <div className="text-red-500 text-sm">{error}</div>}
+              {/* {error && <div className="text-red-500 text-sm">{error}</div>} */}
 
               <button
                 type="submit"

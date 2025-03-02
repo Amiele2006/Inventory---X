@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Next13NProgress } from 'nextjs13-progress';
-
+import { Toaster } from 'sonner';
 import { headers } from 'next/headers';
 import { Providers } from "@/lib/redux/provider"
 
@@ -66,7 +66,7 @@ export default function RootLayout({
           color='#1C2331'
           startPosition={0.75}
           stopDelayMs={200}
-          showOnShallow
+          showOnShallowx
           options={{ 
             speed: 200,
             minimum: 0.1,
@@ -74,6 +74,10 @@ export default function RootLayout({
           />
         {children}
           </Providers>
+          <Toaster 
+          position="top-right"
+          richColors={true}
+          />
       </body>
     </html>
   );
