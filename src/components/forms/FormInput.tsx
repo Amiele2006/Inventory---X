@@ -1,5 +1,5 @@
 import { Field, ErrorMessage } from "formik";
-import { ReactNode } from "react";
+import { ReactNode, forwardRef } from "react";
 
 interface FormInputProps {
   id: string;
@@ -10,9 +10,10 @@ interface FormInputProps {
   icon?: ReactNode;
   rightElement?: ReactNode;
   className?: string;
+  inputRef?: (element: HTMLInputElement | null) => void;
 }
 
-export const FormInput = ({
+export const FormInput = forwardRef<HTMLInputElement, FormInputProps>(({
   id,
   name,
   label,
@@ -21,7 +22,8 @@ export const FormInput = ({
   icon,
   rightElement,
   className,
-}: FormInputProps) => {
+  inputRef,
+}, ref) => {
   return (
     <div className="space-y-2">
       <label
@@ -32,6 +34,17 @@ export const FormInput = ({
       </label>
       <div className="relative">
         <Field
+          innerRef={(el: HTMLInputElement | null) => {
+            // Handle both refs
+            if (typeof ref === 'function') {
+              ref(el);
+            } else if (ref) {
+              ref.current = el;
+            }
+            if (inputRef) {
+              inputRef(el);
+            }
+          }}
           id={id}
           name={name}
           type={type}
@@ -48,4 +61,6 @@ export const FormInput = ({
       <ErrorMessage name={name} component="div" className="text-red-500 text-sm" />
     </div>
   );
-}; 
+});
+
+FormInput.displayName = 'FormInput'; 

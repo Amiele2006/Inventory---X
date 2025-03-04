@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { Poppins } from "next/font/google";
 import {
@@ -86,7 +86,7 @@ const StatCard = ({ title, value, icon, trend, loading, className }: StatCardPro
 
 export default function DashboardLayout({ children }: DashboardLayoutProps) {
   const [sidebarOpen, setSidebarOpen] = useState(true);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading] = useState(false);
   const pathname = usePathname();
 
   // Example stats data

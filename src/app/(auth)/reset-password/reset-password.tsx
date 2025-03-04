@@ -9,6 +9,9 @@ import { Check, Loader2, Eye, EyeOff } from "lucide-react"
 import Link from "next/link"
 import { Poppins } from "next/font/google"
 import AuthLayout from "@/components/AuthLayout/AuthLayout"
+import { Formik, Form } from "formik"
+import { FormInput } from "@/components/forms/FormInput"
+import { LoadingButton } from "@/components/buttons/LoadingButton"
 
 type ResetStep = "verify" | "create" | "success"
 
@@ -29,17 +32,23 @@ const passwordValidationSchema = Yup.object({
     .required("Confirm password is required"),
 })
 
+interface ResetPasswordFormValues {
+  password: string;
+  confirmPassword: string;
+}
+
+const initialValues: ResetPasswordFormValues = {
+  password: "",
+  confirmPassword: "",
+};
+
 export default function ResetPassword() {
   const [showPassword, setShowPassword] = useState(false)
   const [currentStep, setCurrentStep] = useState<ResetStep>("verify")
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
-  const inputRefs = [
-    useRef<HTMLInputElement>(null),
-    useRef<HTMLInputElement>(null),
-    useRef<HTMLInputElement>(null),
-    useRef<HTMLInputElement>(null),
-  ]
+  const inputRefs = useRef<(HTMLInputElement | null)[]>([])
 
   const otpFormik = useFormik({
     initialValues: {
@@ -62,22 +71,20 @@ export default function ResetPassword() {
   })
 
   const passwordFormik = useFormik({
-    initialValues: {
-      password: "",
-      confirmPassword: "",
-    },
+    initialValues: initialValues,
     validationSchema: passwordValidationSchema,
-    onSubmit: async (values) => {
-      setIsSubmitting(true)
+    onSubmit: async (values, { setSubmitting }) => {
+      setIsLoading(true)
       try {
         // Simulate API call
-        await new Promise((resolve) => setTimeout(resolve, 1000))
+        await new Promise((resolve) => setTimeout(resolve, 2000))
         console.log("New password:", values.password)
         setCurrentStep("success")
       } catch (error) {
         console.error("Error setting password:", error)
       } finally {
-        setIsSubmitting(false)
+        setIsLoading(false)
+        setSubmitting(false)
       }
     },
   })
@@ -92,13 +99,13 @@ export default function ResetPassword() {
 
     // Auto-advance to next input
     if (value && index < 3) {
-      inputRefs[index + 1].current?.focus()
+      inputRefs.current[index + 1]?.focus()
     }
   }
 
   const handleKeyDown = (index: number, e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Backspace" && !otpFormik.values.otp[index] && index > 0) {
-      inputRefs[index - 1].current?.focus()
+      inputRefs.current[index - 1]?.focus()
     }
   }
 
@@ -116,16 +123,16 @@ export default function ResetPassword() {
 
       // Focus the appropriate field after paste
       if (digits.length < 4) {
-        inputRefs[digits.length].current?.focus()
+        inputRefs.current[digits.length]?.focus()
       }
     }
   }
 
   useEffect(() => {
     if (currentStep === "verify") {
-      inputRefs[0]?.current?.focus()
+      inputRefs.current[0]?.focus()
     }
-  }, [currentStep]) // Removed inputRefs from dependencies
+  }, [currentStep])
 
   const renderVerifyStep = () => (
     <div className="w-full max-w-md mx-auto space-y-8 p-1">
@@ -149,7 +156,7 @@ export default function ResetPassword() {
             {[0, 1, 2, 3].map((index) => (
               <input
                 key={index}
-                ref={inputRefs[index]}
+                ref={(el) => (inputRefs.current[index] = el)}
                 type="text"
                 style={{borderRadius:"8px"}}
                 maxLength={1}
@@ -203,91 +210,65 @@ export default function ResetPassword() {
         <p className="text-gray-500">Must be at least 8 characters.</p>
       </div>
 
-      <form onSubmit={passwordFormik.handleSubmit} className="space-y-6">
-        <div className="space-y-4">
-          <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
-              Password
-            </label>
-            <div className="relative">
-              <input
-                id="password"
-                type={showPassword ? "text" : "password"}
-                style={{borderRadius:"8px"}}
-                {...passwordFormik.getFieldProps("password")}
-                className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent outline-none"
-                aria-invalid={passwordFormik.touched.password && Boolean(passwordFormik.errors.password)}
-                aria-describedby={
-                  passwordFormik.touched.password && passwordFormik.errors.password ? "password-error" : undefined
-                }
-              />
-              <button
-                type="button"
-                onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
-                aria-label={showPassword ? "Hide password" : "Show password"}
-              >
-                {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
-              </button>
-            </div>
-            {passwordFormik.touched.password && passwordFormik.errors.password && (
-              <div id="password-error" className="text-red-500 text-sm mt-1" role="alert">
-                {passwordFormik.errors.password}
-              </div>
-            )}
-          </div>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={passwordValidationSchema}
+        onSubmit={passwordFormik.handleSubmit}
+      >
+        {({ isSubmitting }) => (
+          <Form className="space-y-6">
+            <FormInput
+              id="password"
+              name="password"
+              label="New Password"
+              type={showPassword ? "text" : "password"}
+              placeholder="Enter your new password"
+              rightElement={
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                >
+                  {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                  <span className="sr-only">
+                    {showPassword ? "Hide password" : "Show password"}
+                  </span>
+                </button>
+              }
+              inputRef={(el) => (inputRefs.current[0] = el)}
+            />
 
-          <div>
-            <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-1">
-              Confirm Password
-            </label>
-            <div className="relative">
-              <input
-                id="confirmPassword"
-                type={showPassword ? "text" : "password"}
-                {...passwordFormik.getFieldProps("confirmPassword")}
-                style={{borderRadius:"8px"}}
-                className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent outline-none"
-                aria-invalid={passwordFormik.touched.confirmPassword && Boolean(passwordFormik.errors.confirmPassword)}
-                aria-describedby={
-                  passwordFormik.touched.confirmPassword && passwordFormik.errors.confirmPassword
-                    ? "confirm-password-error"
-                    : undefined
-                }
-              />
-              <button
-                type="button"
-                onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
-                aria-label={showPassword ? "Hide password" : "Show password"}
-              >
-                {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
-              </button>
-            </div>
-            {passwordFormik.touched.confirmPassword && passwordFormik.errors.confirmPassword && (
-              <div id="confirm-password-error" className="text-red-500 text-sm mt-1" role="alert">
-                {passwordFormik.errors.confirmPassword}
-              </div>
-            )}
-          </div>
-        </div>
+            <FormInput
+              id="confirmPassword"
+              name="confirmPassword"
+              label="Confirm New Password"
+              type={showPassword ? "text" : "password"}
+              placeholder="Confirm your new password"
+              rightElement={
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                >
+                  {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                  <span className="sr-only">
+                    {showPassword ? "Hide password" : "Show password"}
+                  </span>
+                </button>
+              }
+              inputRef={(el) => (inputRefs.current[1] = el)}
+            />
 
-        <button
-          type="submit"
-          style={{borderRadius:"8px"}}
-          className="w-full bg-gray-900 text-white py-4 rounded-lg hover:bg-gray-800 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-          disabled={isSubmitting}
-        >
-          {isSubmitting ? (
-            <div className="flex items-center justify-center">
-              <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-              <span>Creating Password...</span>
-            </div>
-          ) : (
-            "Create Password"
-          )}
-        </button>
-      </form>
+            <LoadingButton
+              type="submit"
+              isLoading={isSubmitting || isLoading}
+              loadingText="Resetting Password..."
+            >
+              Reset Password
+            </LoadingButton>
+          </Form>
+        )}
+      </Formik>
 
       <div className="text-start">
         <span className="text-gray-500">Remember Password? </span>
