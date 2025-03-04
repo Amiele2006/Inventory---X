@@ -1,5 +1,5 @@
 import type React from "react"
-import { Sidebar } from "@/components/Sidebar/Sidebar"
+// import { Sidebar } from "@/components/Sidebar/Sidebar"
 import Head from "next/head"
 import { Header } from "@/components/Header/header"
 
@@ -17,7 +17,7 @@ export default function DashboardLayout({
       </Head>
       <Header />
       <div className="flex h-screen">
-        <Sidebar />
+        {/* <Sidebar /> */}
         <main className="flex-1 overflow-y-auto p-8">{children}</main>
       </div>
     </>

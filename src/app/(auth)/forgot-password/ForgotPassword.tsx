@@ -4,7 +4,7 @@ import { useState } from "react"
 import { Link } from "nextjs13-progress"
 import { Poppins } from "next/font/google"
 import AuthLayout from "@/components/AuthLayout/AuthLayout"
-import { Formik, Form } from "formik"
+import { Formik, Form, FormikHelpers } from "formik"
 import * as Yup from "yup"
 import { FormInput } from "@/components/forms/FormInput"
 import { LoadingButton } from "@/components/buttons/LoadingButton"
@@ -32,7 +32,7 @@ const initialValues: ForgotPasswordFormValues = {
 export default function ForgotPassword() {
   const [isLoading, setIsLoading] = useState(false)
 
-  const handleSubmit = async (values: ForgotPasswordFormValues, { setSubmitting }: any) => {
+  const handleSubmit = async (values: ForgotPasswordFormValues, { setSubmitting }: FormikHelpers<ForgotPasswordFormValues>) => {
     setIsLoading(true)
     try {
       // Your password reset logic here
@@ -77,6 +77,7 @@ export default function ForgotPassword() {
               <LoadingButton
                 type="submit"
                 isLoading={isSubmitting || isLoading}
+                style={{borderRadius:"8px"}}
                 loadingText="Sending Reset Link..."
               >
                 Send Reset Link

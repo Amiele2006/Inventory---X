@@ -70,25 +70,6 @@ export default function ResetPassword() {
     },
   })
 
-  const passwordFormik = useFormik({
-    initialValues: initialValues,
-    validationSchema: passwordValidationSchema,
-    onSubmit: async (values, { setSubmitting }) => {
-      setIsLoading(true)
-      try {
-        // Simulate API call
-        await new Promise((resolve) => setTimeout(resolve, 2000))
-        console.log("New password:", values.password)
-        setCurrentStep("success")
-      } catch (error) {
-        console.error("Error setting password:", error)
-      } finally {
-        setIsLoading(false)
-        setSubmitting(false)
-      }
-    },
-  })
-
   const handleInput = (index: number, value: string) => {
     // Only allow numbers
     if (!/^\d*$/.test(value)) return
@@ -156,9 +137,11 @@ export default function ResetPassword() {
             {[0, 1, 2, 3].map((index) => (
               <input
                 key={index}
-                ref={(el) => (inputRefs.current[index] = el)}
+                ref={(el) => {
+                  inputRefs.current[index] = el;
+                }}
                 type="text"
-                style={{borderRadius:"8px"}}
+                style={{ borderRadius: "8px" }}
                 maxLength={1}
                 className="w-14 h-14 text-center text-2xl font-semibold border rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent outline-none"
                 value={otpFormik.values.otp[index]}
@@ -179,7 +162,7 @@ export default function ResetPassword() {
 
         <button
           type="submit"
-          style={{borderRadius:"8px"}}
+          style={{ borderRadius: "8px" }}
           className="w-full bg-gray-900 text-white py-5 rounded-lg hover:bg-gray-800 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
           disabled={isSubmitting || !otpFormik.values.otp.every(Boolean)}
         >
@@ -213,7 +196,20 @@ export default function ResetPassword() {
       <Formik
         initialValues={initialValues}
         validationSchema={passwordValidationSchema}
-        onSubmit={passwordFormik.handleSubmit}
+        onSubmit={async (values, formikHelpers) => {
+          setIsLoading(true)
+          try {
+            // Simulate API call
+            await new Promise((resolve) => setTimeout(resolve, 2000))
+            console.log("New password:", values.password)
+            setCurrentStep("success")
+          } catch (error) {
+            console.error("Error setting password:", error)
+          } finally {
+            setIsLoading(false)
+            formikHelpers.setSubmitting(false)
+          }
+        }}
       >
         {({ isSubmitting }) => (
           <Form className="space-y-6">
@@ -235,7 +231,9 @@ export default function ResetPassword() {
                   </span>
                 </button>
               }
-              inputRef={(el) => (inputRefs.current[0] = el)}
+              inputRef={(el) => {
+                inputRefs.current[0] = el;
+              }}
             />
 
             <FormInput
@@ -256,7 +254,9 @@ export default function ResetPassword() {
                   </span>
                 </button>
               }
-              inputRef={(el) => (inputRefs.current[1] = el)}
+              inputRef={(el) => {
+                inputRefs.current[1] = el;
+              }}
             />
 
             <LoadingButton
@@ -289,7 +289,7 @@ export default function ResetPassword() {
         <p className="text-gray-500 mb-6">Your password has been changed successfully</p>
         <Link
           href="/login"
-          style={{borderRadius:"8px"}}
+          style={{ borderRadius: "8px" }}
           className="inline-block w-full bg-gray-900 text-white py-4 rounded-lg hover:bg-gray-800 transition-colors duration-200 text-center"
         >
           Back to Login
