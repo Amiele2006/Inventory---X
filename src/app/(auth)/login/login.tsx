@@ -173,14 +173,11 @@ export default function Login() {
                   className="text-red-500 text-sm"
                 />
               </div>
-
-              {/* {error && <div className="text-red-500 text-sm">{error}</div>} */}
-
               <button
                 type="submit"
                 disabled={isSubmitting || loading}
                 style={{ borderRadius: "10px" }}
-                className="w-full rounded-lg bg-[#1C2331] px-6 py-3 text-lg text-white transition-colors hover:bg-[#1C2331]-600 focus:outline-none focus:ring-2 focus:ring-blue-500/20 disabled:opacity-50"
+                className="w-full rounded-lg bg-[#1C2331] px-6 py-3 text-lg text-white transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500/20 disabled:opacity-50"
               >
                 {loading ? (
                   <div className="flex items-center justify-center">

@@ -61,39 +61,50 @@ export default function AuthLayout({ children, screenType }: AuthLayoutProps) {
 
         {screenType === "onboarding" ? (
           <div className="absolute left-1/2 top-1/2 w-[400px] -translate-x-1/2 -translate-y-1/2 text-white">
-            <h1 className="mb-4 text-7xl font-extrabold leading-tight">
+            <h1 className="mb-8 text-5xl font-extrabold leading-tight">
               You are <br /> almost there!
             </h1>
             <p className="text-lg text-gray-300">{content.description}</p>
           </div>
         ) : (
-          <div className="absolute left-1/2 top-1/2 w-[400px] -translate-x-1/2 -translate-y-1/2 rounded-xl bg-slate-900/100 p-6 text-white">
-            <div className="mb-4 flex h-8 w-8 items-center justify-center rounded-full bg-blue-500">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z" />
-                <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z" />
-              </svg>
-            </div>
-              <p className="mb-4 text-sm leading-relaxed break-words">
+          <div className="absolute left-1/2 top-3/4  w-[420px] -translate-x-1/2 -translate-y-1/2">
+            <div className="rounded-2xl bg-[#1C2331]/95 backdrop-blur-sm p-8 text-white">
+              {/* Avatar Circle */}
+              <div className="mb-6 flex justify-center">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/20">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="text-white"
+                  >
+                    <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z" />
+                    <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z" />
+                  </svg>
+                </div>
+              </div>
+
+              {/* Testimonial Text */}
+              <p className="mb-6 text-center text-[15px] leading-relaxed text-white/90">
                 &ldquo;{content.testimonial}&rdquo;
               </p>
 
-            <div className="space-y-1">
-              <p className="font-semibold">{content.author}</p>
-              <div className="flex gap-1">
-                <div className="h-2 w-2 rounded-full bg-white/20"></div>
-                <div className="h-2 w-2 rounded-full bg-blue-500"></div>
-                <div className="h-2 w-2 rounded-full bg-white/20"></div>
+              {/* Author and Dots */}
+              <div className="space-y-4">
+                <p className="text-center text-sm font-medium text-white/90">
+                  {content.author}
+                </p>
+                <div className="flex justify-center gap-1.5">
+                  <div className="h-2 w-2 rounded-full bg-white/20"></div>
+                  <div className="h-2 w-2 rounded-full bg-white"></div>
+                  <div className="h-2 w-2 rounded-full bg-white/20"></div>
+                </div>
               </div>
             </div>
           </div>

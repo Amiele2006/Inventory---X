@@ -66,8 +66,8 @@ export default function RootLayout({
           color='#1C2331'
           startPosition={0.75}
           stopDelayMs={200}
-          showOnShallowx
-          options={{ 
+          showOnShallow
+          options={{  
             speed: 200,
             minimum: 0.1,
           }}

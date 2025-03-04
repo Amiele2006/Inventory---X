@@ -6,6 +6,7 @@ import { Mail } from "lucide-react";
 import AuthLayout from "@/components/AuthLayout/AuthLayout";
 import { Poppins } from "next/font/google";
 import { Link } from "nextjs13-progress";
+import {Loader} from "lucide-react"
 
 const poppins = Poppins({
   subsets: ["latin"],
